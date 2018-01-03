@@ -1,31 +1,5 @@
 
 function varargout = VpLab_plot(varargin)
-% VPLAB_PLOT MATLAB code for VpLab_plot.fig
-%      VPLAB_PLOT, by itself, creates a new VPLAB_PLOT or raises the existing
-%      singleton*.
-%
-%      H = VPLAB_PLOT returns the handle to a new VPLAB_PLOT or the handle to
-%      the existing singleton*.
-%
-%      VPLAB_PLOT('CALLBACK',hObject,eventData,handles,...) calls the local
-%      function named CALLBACK in VPLAB_PLOT.M with the given input arguments.
-%
-%      VPLAB_PLOT('Property','Value',...) creates a new VPLAB_PLOT or raises the
-%      existing singleton*.  Starting from the left, property value pairs are
-%      applied to the GUI before VpLab_plot_OpeningFcn gets called.  An
-%      unrecognized property name or invalid value makes property application
-%      stop.  All inputs are passed to VpLab_plot_OpeningFcn via varargin.
-%
-%      *See GUI Options on GUIDE's Tools menu.  Choose "GUI allows only one
-%      instance to run (singleton)".
-%
-% See also: GUIDE, GUIDATA, GUIHANDLES
-
-% Edit the above text to modify the response to help VpLab_plot
-
-% Last Modified by GUIDE v2.5 02-Jan-2018 16:58:36
-
-% Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
 gui_State = struct('gui_Name',       mfilename, ...
                    'gui_Singleton',  gui_Singleton, ...
@@ -47,51 +21,24 @@ end
 
 % --- Executes just before VpLab_plot is made visible.
 function VpLab_plot_OpeningFcn(hObject, eventdata, handles, varargin)
-% This function has no output args, see OutputFcn.
-% hObject    handle to figure
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-% varargin   command line arguments to VpLab_plot (see VARARGIN)
-
-% Choose default command line output for VpLab_plot
+warning off; %关闭warning警告
 handles.output = hObject;
 
-% Update handles structure
 guidata(hObject, handles);
-
-% UIWAIT makes VpLab_plot wait for user response (see UIRESUME)
-% uiwait(handles.figure1);
 
 
 % --- Outputs from this function are returned to the command line.
 function varargout = VpLab_plot_OutputFcn(hObject, eventdata, handles) 
-% varargout  cell array for returning output args (see VARARGOUT);
-% hObject    handle to figure
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-% Get default command line output from handles structure
 varargout{1} = handles.output;
 
 
 % --- Executes on selection change in Xplot.
 function Xplot_Callback(hObject, eventdata, handles)
-% hObject    handle to Xplot (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-% Hints: contents = cellstr(get(hObject,'String')) returns Xplot contents as cell array
-%        contents{get(hObject,'Value')} returns selected item from Xplot
-
 
 % --- Executes during object creation, after setting all properties.
 function Xplot_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to Xplot (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    empty - handles not created until after all CreateFcns called
-
-% Hint: popupmenu controls usually have a white background on Windows.
-%       See ISPC and COMPUTER.
+%Workspace:提取的工作区变量
+%liststring：工作区的变量名
 Workspace=ArrangeFromWorkspaceData(0);
 varlength=length(Workspace);
 liststring={};
@@ -101,6 +48,7 @@ end
 if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
     set(hObject,'BackgroundColor','white');
 end
+%防止无变量的判断
 if isempty(liststring)
     set(hObject,'String','工作区无变量');
 else
@@ -110,22 +58,9 @@ end
 
 % --- Executes on selection change in Yplot.
 function Yplot_Callback(hObject, eventdata, handles)
-% hObject    handle to Yplot (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-% Hints: contents = cellstr(get(hObject,'String')) returns Yplot contents as cell array
-%        contents{get(hObject,'Value')} returns selected item from Yplot
-
 
 % --- Executes during object creation, after setting all properties.
 function Yplot_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to Yplot (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    empty - handles not created until after all CreateFcns called
-
-% Hint: popupmenu controls usually have a white background on Windows.
-%       See ISPC and COMPUTER.
 Workspace=ArrangeFromWorkspaceData(0);
 varlength=length(Workspace);
 liststring={};
@@ -144,22 +79,11 @@ end
 
 % --- Executes on selection change in Yerrplot.
 function Yerrplot_Callback(hObject, eventdata, handles)
-% hObject    handle to Yerrplot (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
 
-% Hints: contents = cellstr(get(hObject,'String')) returns Yerrplot contents as cell array
-%        contents{get(hObject,'Value')} returns selected item from Yerrplot
 
 
 % --- Executes during object creation, after setting all properties.
 function Yerrplot_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to Yerrplot (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    empty - handles not created until after all CreateFcns called
-
-% Hint: popupmenu controls usually have a white background on Windows.
-%       See ISPC and COMPUTER.
 Workspace=ArrangeFromWorkspaceData(0);
 varlength=length(Workspace);
 liststring={};
@@ -178,22 +102,11 @@ end
 
 % --- Executes on selection change in styleplot.
 function styleplot_Callback(hObject, eventdata, handles)
-% hObject    handle to styleplot (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
 
-% Hints: contents = cellstr(get(hObject,'String')) returns styleplot contents as cell array
-%        contents{get(hObject,'Value')} returns selected item from styleplot
 
 
 % --- Executes during object creation, after setting all properties.
 function styleplot_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to styleplot (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    empty - handles not created until after all CreateFcns called
-
-% Hint: popupmenu controls usually have a white background on Windows.
-%       See ISPC and COMPUTER.
 if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
     set(hObject,'BackgroundColor','white');
 end
@@ -201,11 +114,19 @@ end
 
 % --- Executes on button press in pushbutton1.
 function pushbutton1_Callback(hObject, eventdata, handles)
-% hObject    handle to pushbutton1 (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
 Workspace=ArrangeFromWorkspaceData(0);
-
+%防止不选择变量的方法
+if isempty(Workspace)
+    msgbox('请选择变量');
+    return;
+end
+%获取数据
+%x,y,yerr是绘图变量
+%varstyle表示折线/散点
+%varNew是否新建画布
+%varfit拟合次数
+%varfiten是否拟合
+%str高级设置代码
 varx=get(handles.Xplot,'value');
 vary=get(handles.Yplot,'value');
 varyerr=get(handles.Yerrplot,'value');
@@ -217,14 +138,19 @@ str=get(handles.edit2,'String');
 x=Workspace(varx).signals.values;
 y=Workspace(vary).signals.values;
 yerr=Workspace(varyerr).signals.values;
-
-
+%保证均为数组变量
+if ~isa(x,'double')||~isa(y,'double')||~isa(yerr,'double')
+    msgbox('请选择数组变量');
+    return;
+end
+%保证均为合适的size
 if sum(size(x)~=size(y))||sum(size(yerr)~=size(x))||sum(size(yerr)~=size(y))
     msgbox('绘图数据个数不匹配');
     return;
 end
+%拟合
+varfit=polyfit(x,y,str2double(varfit));
 
-varfit=polyfit(x,y,str2num(varfit));
 if varNew==1
     figure;
     hold on;
@@ -232,8 +158,6 @@ else
     figure(1);
     hold on;
 end
-
-
 
 if varstyle==1
     errorbar(x,y,yerr,'.');
@@ -248,7 +172,11 @@ cftool(x,y);
 end
 
 for k=1:length(str)
-    eval(char(str(k)));
+    try
+        eval(char(str(k)));
+    catch
+        continue;
+    end
 end
 
 guidata(hObject,handles);
@@ -256,21 +184,9 @@ guidata(hObject,handles);
 
 % --- Executes on button press in Newfigure.
 function Newfigure_Callback(hObject, eventdata, handles)
-% hObject    handle to Newfigure (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-% Hint: get(hObject,'Value') returns toggle state of Newfigure
-
 
 
 function fit_text_Callback(hObject, eventdata, handles)
-% hObject    handle to fit_text (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-% Hints: get(hObject,'String') returns contents of fit_text as text
-%        str2double(get(hObject,'String')) returns contents of fit_text as a double
 input=str2num(get(hObject,'String'));
 if (isempty(input))
     set(hObject,'String','0')
@@ -279,12 +195,6 @@ guidata(hObject,handles);
 
 % --- Executes during object creation, after setting all properties.
 function fit_text_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to fit_text (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    empty - handles not created until after all CreateFcns called
-
-% Hint: edit controls usually have a white background on Windows.
-%       See ISPC and COMPUTER.
 if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
     set(hObject,'BackgroundColor','white');
 end
@@ -292,18 +202,9 @@ end
 
 % --- Executes on button press in fiten.
 function fiten_Callback(hObject, eventdata, handles)
-% hObject    handle to fiten (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-% Hint: get(hObject,'Value') returns toggle state of fiten
-
 
 % --- Executes on button press in refresh.
 function refresh_Callback(hObject, eventdata, handles)
-% hObject    handle to refresh (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
 Workspace=ArrangeFromWorkspaceData(0);
 varlength=length(Workspace);
 liststring={};
@@ -324,22 +225,10 @@ guidata(hObject,handles);
 
 
 function edit2_Callback(hObject, eventdata, handles)
-% hObject    handle to edit2 (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-% Hints: get(hObject,'String') returns contents of edit2 as text
-%        str2double(get(hObject,'String')) returns contents of edit2 as a double
 
 
 % --- Executes during object creation, after setting all properties.
 function edit2_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to edit2 (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    empty - handles not created until after all CreateFcns called
-
-% Hint: edit controls usually have a white background on Windows.
-%       See ISPC and COMPUTER.
 if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
     set(hObject,'BackgroundColor','white');
 end
