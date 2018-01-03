@@ -9,3 +9,4 @@
 VpLab_plot(用于实验报告作图)<br>
 函数：<br>
 UncertaintyFormula(用于计算传递误差公式)<br>
+TypeAUncertainty(用于计算type-A类误差)
