@@ -19,7 +19,7 @@ forumla_old=strrep(forumla_old,'.*','*');
 try
     fun_old=sym(forumla_old);%sym格式计算式
 catch
-    errordlg('请输入正确表达式')
+    errordlg('Please enter correct expression!')
     return;
 end
 formula_new='(';

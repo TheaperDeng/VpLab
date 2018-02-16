@@ -12,7 +12,7 @@ t95=[2.48,1.59,1.204,1.05,0.926,0.834,0.770,0.715];%输入矫正数据（按照uncertaint
 lengthinput=length(input);%input长度
 %防止超出长度
 if lengthinput>10||lengthinput<3
-    Out='超出使用范围';
+    Out='The length of arrow should be controled between 3 and 10.';
     return;
 end
 std=0;
